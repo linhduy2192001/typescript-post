@@ -45,14 +45,14 @@ h2 {
   background-color: white;
 }
 
-.fl-table td,
-.fl-table th {
+td,
+th {
   text-align: center;
   padding: 8px;
   color: black;
 }
 
-.fl-table td {
+.table td {
   border-right: 1px solid #f8f8f8;
   font-size: 12px;
 }
@@ -62,18 +62,8 @@ h2 {
   background: #0c243d;
 }
 
-.fl-table tr:nth-child(even) {
+tr:nth-child(even) {
   background: #f8f8f8;
 }
 
 /* Responsive */
-
-@media (max-width: 1070px) {
-  .fl-table {
-    display: block;
-  }
-  th,
-  td {
-    padding: 4px;
-  }
-}
