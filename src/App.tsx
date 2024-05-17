@@ -41,8 +41,8 @@ function App() {
     <>
       <div className="table-wrapper">
         <Spin spinning={loading}>
-          <table className="fl-table">
-            <thead>
+          <table className="table">
+            <thead className="title">
               <tr>
                 <th>UserId</th>
                 <th>Id</th>
