@@ -34,7 +34,7 @@ h2 {
   border-radius: 5px;
   font-size: 12px;
   font-weight: normal;
-  border: none;
+  border: 1px solid black;
   border-collapse: collapse;
   width: 100%;
   max-width: 100%;
@@ -108,7 +108,7 @@ h2 {
   }
   .fl-table thead th {
     text-align: left;
-    border-bottom: 1px solid #f7f7f9;
+    border-bottom: 1px solid #000000;
   }
   .fl-table tbody tr {
     display: table-cell;
