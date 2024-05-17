@@ -32,19 +32,6 @@ h2 {
   overflow-x: auto;
   text-align: center;
 }
-
-.fl-table {
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: normal;
-  border: 1px solid black;
-  border-collapse: collapse;
-  width: 100%;
-  max-width: 100%;
-  white-space: pre;
-  background-color: white;
-}
-
 td,
 th {
   text-align: center;
@@ -54,7 +41,7 @@ th {
 
 .table td {
   border-right: 1px solid #f8f8f8;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .table-wrapper .table .title tr th {
@@ -65,5 +52,3 @@ th {
 tr:nth-child(even) {
   background: #f8f8f8;
 }
-
-/* Responsive */
