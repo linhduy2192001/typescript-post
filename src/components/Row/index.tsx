@@ -9,14 +9,12 @@ interface PostProps {
 
 const Row: React.FC<PostProps> = ({ userId, id, title, body }) => {
   return (
-    <tbody>
-      <tr>
-        <td>{userId}</td>
-        <td>{id}</td>
-        <td>{title}</td>
-        <td>{body}</td>
-      </tr>
-    </tbody>
+    <tr>
+      <td>{userId}</td>
+      <td>{id}</td>
+      <td>{title}</td>
+      <td>{body}</td>
+    </tr>
   );
 };
 

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Row from "./components/Row";
 import { Spin, message } from "antd";
+import { delay } from "./utls/delay";
+import { postService } from "./services/postService";
+import { Paginate } from "./components/Paginate";
 
 interface PostData {
   userId: number;
@@ -11,32 +14,49 @@ interface PostData {
 }
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState<PostData[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setTimeout(async () => {
-          const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const [page, setPage] = useState<number>(1);
+  const [totalPage, setTotalPage] = useState<number>(1);
 
-          if (!res.ok) {
-            throw new Error("Không thể gọi dữ liệu");
-          }
-          const data = await res.json();
-          setPosts(data);
-          setLoading(false);
-          message.success("Hiển thị dữ liệu thành công");
-        }, 1000);
-      } catch (err) {
-        console.log("err", err);
-        setLoading(false);
-        message.error("Không thể hiển thị dữ liệu!");
-      }
-    };
-    fetchData();
+  const limit = 10;
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const pageParams = params.get("page");
+    const initialPage = pageParams ? parseInt(pageParams, 10) : 1;
+    setPage(initialPage);
   }, []);
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const res = await postService.getPost(page, limit);
+
+        delay(500);
+        if (!(res.status == 200)) {
+          throw new Error("Không thể gọi dữ liệu");
+        }
+        message.success("Gọi dữ liệu thành công!");
+        setPosts(res.data);
+        const totalCount = 100;
+        const totalPages = Math.ceil(totalCount / limit);
+        setTotalPage(totalPages);
+        setLoading(false);
+      } catch (error) {
+        console.log("error", error);
+        message.error("Không thể gọi dữ liệu");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPost();
+  }, [page]);
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
   return (
     <>
       <div className="table-wrapper">
@@ -49,12 +69,17 @@ function App() {
                 <th>Title</th>
                 <th>Body</th>
               </tr>
+              {posts.map((e) => (
+                <Row key={e.id} {...e} />
+              ))}
             </thead>
-            {posts.map((e) => (
-              <Row key={e.id} {...e} />
-            ))}
           </table>
         </Spin>
+        <Paginate
+          totalPage={totalPage}
+          page={page}
+          onPageChange={handlePageChange}
+        />
       </div>
     </>
   );
