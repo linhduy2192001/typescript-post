@@ -35,11 +35,10 @@ function App() {
         const res = await postService.getPost(page, limit);
 
         delay(500);
-        if (!(res.status == 200)) {
-          throw new Error("Không thể gọi dữ liệu");
-        }
+
         message.success("Gọi dữ liệu thành công!");
         setPosts(res.data);
+
         const totalCount = 100;
         const totalPages = Math.ceil(totalCount / limit);
         setTotalPage(totalPages);
