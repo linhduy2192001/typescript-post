@@ -20,4 +20,13 @@ export const postService = {
   getAllPost() {
     return axios.get<PostData[]>(POST_API);
   },
+  addPost(newPost: Omit<PostData, "id">) {
+    return axios.post<PostData[]>(POST_API, newPost);
+  },
+  deletePost(id: number) {
+    return axios.delete<PostData[]>(`${POST_API}/${id}`);
+  },
+  updatePost(id: number, updatedPost: Omit<PostData, "id">) {
+    return axios.put<PostData>(`${POST_API}/${id}`, updatedPost);
+  },
 };

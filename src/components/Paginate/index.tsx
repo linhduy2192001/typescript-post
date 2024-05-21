@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useSearchParams } from "react-router-dom";
 
 interface PaginateProps {
   page: number;
@@ -69,7 +70,7 @@ export const Paginate: React.FC<PaginateProps> = ({
   return (
     <nav
       aria-label="Page navigation example"
-      className="paginate-wrap d-flex justify-content-center"
+      className="paginate d-flex justify-content-center"
     >
       <ul className="pagination">
         <li className="page-item">
