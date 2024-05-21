@@ -52,3 +52,15 @@ th {
 tr:nth-child(even) {
   background: #f8f8f8;
 }
+.title {
+  width: 100%;
+}
+
+.form {
+  background: #f8f8f8;
+  height: 100%;
+  margin: 10px;
+}
+textarea {
+  resize: none;
+}

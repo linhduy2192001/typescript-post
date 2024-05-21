@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { useSearchParams } from "react-router-dom";
 
 interface PaginateProps {
   page: number;

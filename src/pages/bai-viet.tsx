@@ -13,8 +13,6 @@ const Post = () => {
   // const [totalPage, setTotalPage] = useState<number>(1);
   const [newPost, setNewPost] = useState({ title: "", body: "", userId: 1 });
   const { page, totalPage, handlePageChange } = usePageControl(10);
-  const mutation = useMutation({});
-  console.log("muation", mutation);
   const {
     data: posts,
     isLoading,
@@ -83,10 +81,11 @@ const Post = () => {
   const handleDelete = () => {};
   return (
     <>
-      <form onSubmit={handleAddPost} className="p-3">
+      <form onSubmit={handleAddPost} className="form p-3">
         <div>
           <label htmlFor="title">Title</label>
           <input
+            className="title"
             id="title"
             type="text"
             value={newPost.title}
@@ -101,7 +100,7 @@ const Post = () => {
             onChange={(e) => setNewPost({ ...newPost, body: e.target.value })}
           ></textarea>
         </div>
-        <button className="btn btn-light m-3" type="submit">
+        <button className=" btn btn-primary btn m-3" type="submit">
           Add Post
         </button>
       </form>
