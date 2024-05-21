@@ -2,7 +2,7 @@ import Row from "../components/Row";
 import { Paginate } from "../components/Paginate";
 import { postService } from "../services/postService";
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import _default from "antd/es/theme";
 import usePageControl from "../hooks/usePageControl";
 import Skeleton from "../components/Skeleton";
