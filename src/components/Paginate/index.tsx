@@ -70,7 +70,7 @@ export const Paginate: React.FC<PaginateProps> = ({
   return (
     <nav
       aria-label="Page navigation example"
-      className="d-flex justify-content-center"
+      className="paginate-wrap d-flex justify-content-center"
     >
       <ul className="pagination">
         <li className="page-item">
